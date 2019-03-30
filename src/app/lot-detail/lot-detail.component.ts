@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core'
 import {LotService} from '../services/lot.service'
 import {Lot} from '../Lot'
-import {ActivatedRoute, ParamMap} from '@angular/router';
-import {switchMap} from 'rxjs/operators';
-import {Report} from '../Report';
+import {ActivatedRoute, ParamMap} from '@angular/router'
+import {switchMap} from 'rxjs/operators'
+import {Report} from '../Report'
 
 @Component({
   selector: 'app-lot-detail',
@@ -13,7 +13,7 @@ import {Report} from '../Report';
 export class LotDetailComponent implements OnInit {
 
   lot: Lot
-  reports: Report[]
+  reports: Report[] = []
 
   formSliderVal = 0
 
@@ -23,14 +23,16 @@ export class LotDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.paramMap.pipe(
-      switchMap( (params: ParamMap) =>
-        this.lotService.getSingle(params.get('id'))
-      )
-    ).subscribe( lot => {
-        this.lot = lot
+    this.route.paramMap.subscribe(map => this.loadLot(map.get('id')))
+  }
+
+  loadLot(lotId) {
+    this.lotService.getSingle(lotId)
+      .subscribe( res => {
+        this.lot = res
         this.updateReports()
-    })
+      }
+    )
   }
 
   updateReports() {
@@ -42,6 +44,12 @@ export class LotDetailComponent implements OnInit {
 
   submitReport() {
     console.log(this.formSliderVal)
+    this.lotService.submitReport(this.lot.id, this.formSliderVal)
+      .subscribe( success => {
+        this.loadLot(this.lot.id)
+      }, err => {
+        alert('There was an error submitting report')
+      })
   }
 
 }

@@ -15,9 +15,12 @@ export class LotListComponent implements OnInit {
 
   ngOnInit() {
     this.lotService.getGlobalLots()
-      .subscribe( lots => {
+      .subscribe( res => {
+        const lots = res
         console.log(lots)
         this.lots = lots
+      }, err => {
+        alert(err)
       } )
   }
 
