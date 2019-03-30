@@ -1,0 +1,27 @@
+<div class="container">
+  <app-lot-summary-card [lot]="lot"></app-lot-summary-card>
+
+  <mat-card>
+    <mat-card-title>Recent Reports</mat-card-title>
+<!--    <mat-card-subtitle>within the last hour</mat-card-subtitle>-->
+    <mat-card-content>
+      <div *ngIf="reports.length === 0">
+        <span><em>no reports within the last hour</em></span>
+      </div>
+      <div *ngFor="let report of reports">
+        <app-report [report]="report"></app-report>
+      </div>
+    </mat-card-content>
+  </mat-card>
+<br><br>
+  <mat-card>
+    <mat-card-title>How full is this lot?</mat-card-title>
+    <mat-card-content>
+      <mat-slider tickInterval="20" step="20" style="width: 100%"
+        [(value)]="formSliderVal"></mat-slider>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="submitReport()">Submit</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

@@ -1,0 +1,4 @@
+mat-sidenav-container.mat-drawer-container {
+  overflow: auto;
+  flex-grow: 1;
+}

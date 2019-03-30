@@ -1,0 +1,24 @@
+<div>
+  <br>
+  <div class="container">
+    <div class="container">
+      <div fxLayout="row" fxFill fxLayoutAlign="center center" class="content">
+        <mat-card class="card" style="height: 100vh;" >
+          <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
+            <h3>All Lots</h3>
+          </mat-card-title>
+          <mat-card-content>
+            <mat-grid-list cols="1"  >
+                <mat-list-item *ngFor="let lot of lots"
+                               style="margin-top: 5px; margin-bottom: 5px;">
+                  <a style="text-decoration: none" routerLink="/lot/{{lot.id}}">
+                    <app-lot-summary-card [lot]="lot"></app-lot-summary-card>
+                  </a>
+                </mat-list-item>
+            </mat-grid-list>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
