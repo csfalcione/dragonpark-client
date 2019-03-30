@@ -1,5 +1,22 @@
 <div class="container" *ngIf="lot">
+  <br>
+
   <app-lot-summary-card [lot]="lot"></app-lot-summary-card>
+
+  <br>
+
+  <mat-card>
+    <mat-card-title>How full is this lot?</mat-card-title>
+    <mat-card-content>
+      <mat-slider tickInterval="20" step="20" style="width: 100%"
+                  [(value)]="formSliderVal"></mat-slider>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="submitReport()">Submit</button>
+    </mat-card-actions>
+  </mat-card>
+
+  <br>
 
   <mat-card>
     <mat-card-title>Recent Reports</mat-card-title>
@@ -13,15 +30,5 @@
       </div>
     </mat-card-content>
   </mat-card>
-<br><br>
-  <mat-card>
-    <mat-card-title>How full is this lot?</mat-card-title>
-    <mat-card-content>
-      <mat-slider tickInterval="20" step="20" style="width: 100%"
-        [(value)]="formSliderVal"></mat-slider>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-raised-button color="primary" (click)="submitReport()">Submit</button>
-    </mat-card-actions>
-  </mat-card>
+
 </div>

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core'
 import {Observable} from 'rxjs'
 import {Lot} from '../Lot'
 import {HttpClient} from '@angular/common/http'
-import {map} from 'rxjs/operators';
+import {map} from 'rxjs/operators'
 
 const baseUrl = 'http://localhost:4000/api'
 
