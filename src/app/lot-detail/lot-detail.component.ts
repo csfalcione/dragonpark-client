@@ -4,6 +4,7 @@ import {Lot} from '../Lot'
 import {ActivatedRoute, ParamMap} from '@angular/router'
 import {switchMap} from 'rxjs/operators'
 import {Report} from '../Report'
+import {timer} from 'rxjs';
 
 @Component({
   selector: 'app-lot-detail',
@@ -23,7 +24,13 @@ export class LotDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.paramMap.subscribe(map => this.loadLot(map.get('id')))
+    this.route.paramMap.subscribe(
+      map => {
+        const id = map.get('id')
+        this.loadLot(id)
+        timer(0, 10000).subscribe( _ => this.loadLot(id) )
+      }
+    )
   }
 
   loadLot(lotId) {
