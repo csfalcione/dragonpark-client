@@ -1,5 +1,6 @@
 # DragonhacksClient
 
+Frontend for a hackathon project. See <a href="https://devpost.com/software/dragonpark">the devpost submission</a> for more details.
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.7.
 
 ## Development server
